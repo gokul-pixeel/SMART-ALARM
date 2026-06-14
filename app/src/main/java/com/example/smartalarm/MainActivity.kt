@@ -4,18 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.smartalarm.ui.theme.SmartAlarmTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableStateOf
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,20 +29,32 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun HomeScreen() {
+    var count = remember {
+        mutableStateOf(0)
+    }
+    val alarms = listOf(
+        Alarm("07:00 AM", "Push-ups"),
+        Alarm("06:30 AM", "Pull-ups"),
+        Alarm("08:00 AM", "Sit-ups")
+    )
     Column {
         Text(" ⏰ Smart Wake-Up Alarm")
-       Card {
-           Column {
+        alarms.forEach { alarm ->
 
-               Text("7:00 am")
-               Text("push ups challenge")
+            Card {
+                Column {
+                    Text(alarm.time)
+                    Text(alarm.challenge)
+                }
+            }
 
-           }
-
-       }
+        }
+        Text("Button pressed: ${count.value} times")
 
         Button(
-            onClick = { }
+            onClick = {
+                count.value++
+            }
         ) {
             Text("Add Alarm")
         }
