@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.smartalarm.ui.theme.SmartAlarmTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +34,15 @@ class MainActivity : ComponentActivity() {
 fun HomeScreen() {
     Column {
         Text(" ⏰ Smart Wake-Up Alarm")
-        Text("7:00 am")
-        Text("push ups challenge")
+       Card {
+           Column {
+
+               Text("7:00 am")
+               Text("push ups challenge")
+
+           }
+
+       }
 
         Button(
             onClick = { }
