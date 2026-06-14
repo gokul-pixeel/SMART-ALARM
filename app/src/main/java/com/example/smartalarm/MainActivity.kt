@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.smartalarm.ui.theme.SmartAlarmTheme
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,29 +21,32 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SmartAlarmTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "goku",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                HomeScreen()
                 }
             }
         }
     }
-}
+
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun HomeScreen() {
+    Column {
+        Text(" ⏰ Smart Wake-Up Alarm")
+        Text("7:00 am")
+        Text("push ups challenge")
+
+        Button(
+            onClick = { }
+        ) {
+            Text("Add Alarm")
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     SmartAlarmTheme {
-        Greeting("Android")
+        HomeScreen()
     }
 }
